@@ -24,4 +24,8 @@ router.put('/:id', updatePatient);
 // DELETE /patients/:id - delete a patient
 router.delete('/:id', deletePatient);
 
+router.get('/error-test', (req, res) => {
+  throw new Error('This is a test error');
+});
+
 export default router;
