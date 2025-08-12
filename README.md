@@ -36,6 +36,36 @@ The application is structured with clear separation of concerns:
 - **Prisma ORM**: Provides type-safe access to the SQLite database.
 - **TypeScript**: Ensures type safety and maintainable code.
 
+## 📐 Database Schema: PatientCharacteristic
+
+| Field              | Type       | Description                          |
+|-------------------|------------|--------------------------------------|
+| `id`              | `Int`      | Unique identifier (UUID)             |
+| `name`            | `String`   | Name of patient                      |
+| `email`           | `String`      | Unique identifier (UUID)             |
+| `age`             | `Int`      | Patient's age                        |
+| `gender`          | `Enum`     | `male`, `female`, or `other`         |
+| `heightCm`        | `Float?`   | Height in centimeters (optional)     |
+| `weightKg`        | `Float?`   | Weight in kilograms (optional)       |
+| `bloodType`       | `Enum?`    | `A`, `B`, `AB`, or `O` (optional)    |
+| `smoker`          | `Boolean`  | Whether the patient smokes           |
+| `pregnant`        | `Boolean`  | Whether the patient is pregnant      |
+| `createdAt`       | `DateTime` | Timestamp of creation                |
+
+### 🧬 Enums
+
+**Gender**
+- `male`
+- `female`
+- `other`
+- `not_specified
+
+**BloodType**
+- `A`
+- `B`
+- `AB`
+- `O`
+
 
 ## 📦 Installation
 
