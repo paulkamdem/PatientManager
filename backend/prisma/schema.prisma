@@ -39,4 +39,5 @@ enum BloodType {
   B
   AB
   O
+  not_specified
 }
