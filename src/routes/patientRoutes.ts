@@ -9,23 +9,19 @@ import {
 
 const router = Router();
 
-// GET /patients - list all patients
+// GET /patients - Liste alle Patienten
 router.get('/', getPatients);
 
-// GET /patients/:id - get patient by ID
+//GET /patients/:id – Details eines Patienten
 router.get('/:id', getPatientById);
 
-// POST /patients - create a new patient
+// POST /patients – Neuen Patienten anlegen
 router.post('/', createPatient);
 
-// PUT /patients/:id - update a patient
+// PUT /patients/:id – Patienten aktualisieren
 router.put('/:id', updatePatient);
 
-// DELETE /patients/:id - delete a patient
+// DELETE /patients/:id – Patienten löschen
 router.delete('/:id', deletePatient);
-
-router.get('/error-test', (req, res) => {
-  throw new Error('This is a test error');
-});
 
 export default router;
