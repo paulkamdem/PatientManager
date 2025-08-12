@@ -17,4 +17,26 @@ model Patient {
   id    Int    @id @default(autoincrement())
   name  String
   email String @unique
+  age               Int     @default(0)
+  gender            Gender  @default(not_specified)
+  heightCm          Float?    // optional
+  weightKg          Float?    // optional
+  bloodType         BloodType?
+  smoker            Boolean   @default(false)
+  pregnant          Boolean   @default(false)
+  createdAt         DateTime  @default(now())
+}
+
+enum Gender {
+  male
+  female
+  other
+  not_specified
+}
+
+enum BloodType {
+  A
+  B
+  AB
+  O
 }
