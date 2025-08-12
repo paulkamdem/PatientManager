@@ -25,3 +25,14 @@ A simple RESTful API built with Node.js, Express, TypeScript, Prisma, and SQLite
 ```bash
 git clone https://github.com/paulkamdem/PatientManager.git
 cd PatientManager
+
+## Install dependencies:
+npm install
+
+## Set up the database
+npx prisma migrate dev --name init
+
+## Start the development server:
+npm run dev
+
+
