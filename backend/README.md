@@ -65,24 +65,8 @@ The application is structured with clear separation of concerns:
 - `B`
 - `AB`
 - `O`
+- 'not_specified'
 
 
-## 📦 Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/paulkamdem/PatientManager.git
-cd PatientManager
-
-## Install dependencies:
-npm install
-
-## Set up the database
-npx prisma generate
-npx prisma migrate dev --name init
-
-## Start the development server:
-npm run dev
 
 
