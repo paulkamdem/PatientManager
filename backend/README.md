@@ -1,4 +1,4 @@
-# Patient Management API for Pohlig Traunstein
+# Backend Rest API 
 
 A simple RESTful API built with Node.js, Express, TypeScript, Prisma, and SQLite. It allows you to manage patients with full CRUD functionality.
 
