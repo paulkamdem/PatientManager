@@ -23,5 +23,5 @@ A simple RESTful API built with Node.js, Express, TypeScript, Prisma, and SQLite
 1. Clone the repository:
 
 ```bash
-git clone [https://github.com/your-username/user-api.git](https://github.com/paulkamdem/PatientManager.git)
+git clone https://github.com/paulkamdem/PatientManager.git
 cd PatientManager
