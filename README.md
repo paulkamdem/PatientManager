@@ -49,6 +49,7 @@ cd PatientManager
 npm install
 
 ## Set up the database
+npx prisma generate
 npx prisma migrate dev --name init
 
 ## Start the development server:
