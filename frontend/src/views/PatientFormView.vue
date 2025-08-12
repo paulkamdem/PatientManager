@@ -15,19 +15,36 @@ const weightKg = ref<number | undefined>(undefined);
 const bloodType = ref<'A' | 'B' | 'AB' | "O"| 'not_specified'>('not_specified');
 const smoker = ref<boolean | undefined>(undefined);
 const pregnant = ref<boolean | undefined>(undefined);
+const error = ref<string | null>(null);
+
 
 onMounted(async () => {
   if (isEdit) {
-    const res = await getPatient(Number(route.params.id));
-    name.value = res.data.name;
-    email.value = res.data.email;
-    gender.value = res.data.gender;
-    bloodType.value = res.data.bloodType
-    age.value = res.data.age;
-    heightCm.value = res.data.heightCm;
-    weightKg.value = res.data.weightKg;
-    smoker.value = res.data.smoker;
-    pregnant.value = res.data.pregnant;
+
+    const id = Number(route.params.id);
+    if (isNaN(id)) {
+      error.value = 'Invalid patient ID.';
+      router.push({ name: 'WrongUrlFormat' });
+      return;
+    }
+
+    try {
+      const res = await getPatient(Number(route.params.id));
+      name.value = res.data.name;
+      email.value = res.data.email;
+      gender.value = res.data.gender;
+      bloodType.value = res.data.bloodType
+      age.value = res.data.age;
+      heightCm.value = res.data.heightCm;
+      weightKg.value = res.data.weightKg;
+      smoker.value = res.data.smoker;
+      pregnant.value = res.data.pregnant;
+
+    }catch(e) {
+      error.value = 'Patient not found.';
+      router.push({ name: 'NotFound' });
+    }
+    
   }
 });
 
@@ -55,7 +72,8 @@ const handleSubmit = async () => {
 <template>
   <div>
     <h2>{{ isEdit ? 'Edit Patient' : 'Create Patient' }}</h2>
-    <form @submit.prevent="handleSubmit">
+    <div v-if="error">{{ error }}</div>
+    <form v-else @submit.prevent="handleSubmit">
       <label>Name:</label>
       <input v-model="name" required />
       <label>Email:</label>

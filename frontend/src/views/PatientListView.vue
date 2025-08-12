@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { getPatients, deletePatient, type Patient } from '../services/patientService';
+import { getPatients, deletePatient } from '../services/patientService';
+import type { Patient } from '../../../backend/src/models/Patient';
 import { useRouter } from 'vue-router';
 
 const patients = ref<Patient[]>([]);
@@ -9,7 +10,7 @@ const router = useRouter();
 onMounted(async () => {
   const res = await getPatients();
   patients.value = res.data;
-  
+
 });
 
 const handleDelete = async (id: number) => {

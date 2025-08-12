@@ -1,12 +1,8 @@
 import axios from 'axios';
+import type { Patient } from '../../../backend/src/models/Patient';
 
 const API_URL = 'http://localhost:3000/patients';
 
-export interface Patient {
-  id: number;
-  name: string;
-  email: string;
-}
 
 export const getPatients = () => axios.get<Patient[]>(API_URL);
 export const getPatient = (id: number) => axios.get<Patient>(`${API_URL}/${id}`);
