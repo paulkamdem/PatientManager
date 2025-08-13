@@ -1,0 +1,44 @@
+.detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+.detail-card {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+  width: 100%;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  color: #2c3e50;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.detail-item {
+  background-color: #f8f9fa;
+  color: #34495e;
+}
+
+/* Dark mode */
+.dark .detail-card {
+  background-color: #2c2c3c;
+  color: #eee;
+}
+
+.dark .detail-item {
+  background-color: #3a3a4a;
+  color: #eee;
+}
