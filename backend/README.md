@@ -70,8 +70,9 @@ The application is structured with clear separation of concerns:
 
 ## Set up the database Prisma when update
 
+```bash
 npx prisma generate
 npx prisma migrate dev --name init
-
+```
 
 
