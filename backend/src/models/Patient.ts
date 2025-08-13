@@ -6,7 +6,7 @@ export interface Patient {
   gender: 'male' | 'female' | 'other' | 'not_specified';
   heightCm?: number | null;
   weightKg?: number | null;
-  bloodType: 'A' | 'B' | 'AB' | 'O';
+  bloodType: 'A' | 'B' | 'AB' | 'O' | 'not_specified';
   smoker: boolean;
   pregnant: boolean;
 }
