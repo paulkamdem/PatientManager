@@ -73,6 +73,8 @@ The application is structured with clear separation of concerns:
 ```bash
 npx prisma generate
 npx prisma migrate dev --name init
+
+npx prisma migrate dev --name update-user-schema
 ```
 
 
