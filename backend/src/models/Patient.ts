@@ -1,12 +1,12 @@
 export interface Patient {
-  id: number;
+
   name: string;
   email: string;
-  age: number;
+  age?: number | null;
   gender: 'male' | 'female' | 'other' | 'not_specified';
-  heightCm?: number;
-  weightKg?: number;
-  bloodType: 'A' | 'B' | 'AB' | 'O' | 'not_specified';
-  smoker?: boolean;
-  pregnant?: boolean;
+  heightCm?: number | null;
+  weightKg?: number | null;
+  bloodType: 'A' | 'B' | 'AB' | 'O';
+  smoker: boolean;
+  pregnant: boolean;
 }

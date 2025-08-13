@@ -1,5 +1,5 @@
 import { Patient } from "../models/Patient";
-import { PrismaClient } from '@prisma/client';
+import { BloodType, PrismaClient } from '@prisma/client';
 
 
 
@@ -46,8 +46,22 @@ export const createPatient = (name: string, email: string): Patient => {
   return newPatient;
 };
 */
-export const createPatient = async (name: string, email: string) => {
-  return await prisma.patient.create({ data: { name, email } });
+export const createPatient = async (data : Patient) => {
+  return await prisma.patient.create(
+    { 
+      data: {
+      name: data.name,
+      email: data.email,
+      age: data.age ?? undefined,
+      gender: data.gender,
+      heightCm: data.heightCm ?? null,
+      weightKg: data.weightKg ?? null,
+      bloodType: data.bloodType,
+      smoker: data.smoker ?? null,
+      pregnant: data.pregnant ?? null
+    }
+    }
+  );
 };
 
 // Update patient

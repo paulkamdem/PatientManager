@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 //import { patients } from '../services/patientService';
 import * as patientService from '../services/patientService'; 
+import { Patient } from '../models/Patient';
 
 
 /*
@@ -39,10 +40,24 @@ export const createPatient = (req: Request, res: Response) => {
 };
 */
 export const createPatient = async (req: Request, res: Response) => {
-  const { name, email } = req.body;
-  const newUser = await patientService.createPatient(name, email);
+  const patient = toPatient(req.body);
+  const newUser = await patientService.createPatient(patient);
   res.status(201).json(newUser);
 };
+
+function toPatient(body: any): Patient {
+  return {
+    name: String(body.name),
+    email: String(body.email),
+    age: body.age ?? null,
+    gender: ['male', 'female', 'other', 'not_specified'].includes(body.gender) ? body.gender : 'not_specified',
+    heightCm: body.heightCm != null ? Number(body.heightCm) : null,
+    weightKg: body.weightKg != null ? Number(body.weightKg) : null,
+    bloodType: ['A', 'B', 'AB', 'O', 'not_specified'].includes(body.bloodType) ? body.bloodType : 'not_specified',
+    smoker: body.smoker === true,
+    pregnant: body.pregnant === true
+  };
+}
 
 
 /*

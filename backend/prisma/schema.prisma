@@ -21,10 +21,9 @@ model Patient {
   gender            Gender  @default(not_specified)
   heightCm          Float?    // optional
   weightKg          Float?    // optional
-  bloodType         BloodType?
+  bloodType         BloodType
   smoker            Boolean   @default(false)
   pregnant          Boolean   @default(false)
-  createdAt         DateTime  @default(now())
 }
 
 enum Gender {

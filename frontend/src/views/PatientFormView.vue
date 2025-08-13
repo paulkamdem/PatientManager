@@ -6,16 +6,20 @@ import '../assets/formsStyle.css';
 
 const route = useRoute();
 const router = useRouter();
+
 const isEdit = route.name === 'EditPatient';
+
 const name = ref('');
 const email = ref('');
-const age = ref(0);
-const gender = ref<'male' | 'female' | 'other' | 'not_specified'>('not_specified'); 
-const heightCm = ref<number | undefined>(undefined);
-const weightKg = ref<number | undefined>(undefined);
-const bloodType = ref<'A' | 'B' | 'AB' | "O"| 'not_specified'>('not_specified');
-const smoker = ref<boolean | undefined>(undefined);
-const pregnant = ref<boolean | undefined>(undefined);
+const age = ref<number | null>(null);
+const gender = ref<'male' | 'female' | 'other' | 'not_specified'>('not_specified');
+const heightCm = ref<number | null>(null);
+const weightKg = ref<number | null>(null);
+const bloodType = ref<'A' | 'B' | 'AB' | 'O' | 'not_specified'>('not_specified');
+const smoker = ref(false);
+const pregnant = ref(false);
+
+
 const error = ref<string | null>(null);
 const showPregnant = computed(() => gender.value === 'female');
 
@@ -31,16 +35,19 @@ onMounted(async () => {
     }
 
     try {
-      const res = await getPatient(Number(route.params.id));
-      name.value = res.data.name;
-      email.value = res.data.email;
-      gender.value = res.data.gender;
-      bloodType.value = res.data.bloodType
-      age.value = res.data.age;
-      heightCm.value = res.data.heightCm;
-      weightKg.value = res.data.weightKg;
-      smoker.value = res.data.smoker;
-      pregnant.value = res.data.pregnant;
+      if (isEdit) {
+        const res = await getPatient(Number(route.params.id));
+        const user = res.data;
+        name.value = user.name;
+        email.value = user.email;
+        age.value = user.age ?? null;
+        gender.value = user.gender ?? 'not_specified';
+        heightCm.value = user.heightCm ?? null;
+        weightKg.value = user.weightKg ?? null;
+        bloodType.value = user.bloodType ?? 'not_specified';
+        smoker.value = user.smoker ?? false;
+        pregnant.value = user.pregnant ?? false;
+      }
 
     }catch(e) {
       error.value = 'Patient not found.';
@@ -52,15 +59,15 @@ onMounted(async () => {
 
 const handleSubmit = async () => {
   const payload = { 
-    name: name.value, 
+    name: name.value,
     email: email.value,
     age: age.value,
     gender: gender.value,
     heightCm: heightCm.value,
     weightKg: weightKg.value,
+    bloodType: bloodType.value,
     smoker: smoker.value,
-    pregnant: pregnant.value,
-    bloodType: bloodType.value
+    pregnant: showPregnant.value ? pregnant.value : undefined
 };
   if (isEdit) {
     await updatePatient(Number(route.params.id), payload);
