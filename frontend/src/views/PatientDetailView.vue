@@ -26,7 +26,7 @@ onMounted(async () => {
     patient.value = res.data;
 
   } catch (e) {
-    //error.value = 'User not found.';
+    error.value = 'User not found.';
     router.push({ name: 'NotFound' });
   }
 
