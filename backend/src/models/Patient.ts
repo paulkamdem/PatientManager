@@ -10,3 +10,4 @@ export interface Patient {
   smoker: boolean;
   pregnant: boolean;
 }
+

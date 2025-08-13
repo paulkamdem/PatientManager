@@ -21,7 +21,7 @@ model Patient {
   gender            Gender  @default(not_specified)
   heightCm          Float?    // optional
   weightKg          Float?    // optional
-  bloodType         BloodType
+  bloodType         BloodType @default(not_specified)
   smoker            Boolean   @default(false)
   pregnant          Boolean   @default(false)
 }

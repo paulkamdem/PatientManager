@@ -44,9 +44,9 @@ onMounted(async () => {
         gender.value = user.gender ?? 'not_specified';
         heightCm.value = user.heightCm ?? null;
         weightKg.value = user.weightKg ?? null;
-        bloodType.value = user.bloodType ?? 'not_specified';
+        bloodType.value = user.bloodType;
         smoker.value = user.smoker ?? false;
-        pregnant.value = user.pregnant ?? false;
+        pregnant.value = user.pregnant;
       }
 
     }catch(e) {
@@ -67,7 +67,7 @@ const handleSubmit = async () => {
     weightKg: weightKg.value,
     bloodType: bloodType.value,
     smoker: smoker.value,
-    pregnant: showPregnant.value ? pregnant.value : undefined
+    pregnant: showPregnant.value ? pregnant.value : false
 };
   if (isEdit) {
     await updatePatient(Number(route.params.id), payload);
