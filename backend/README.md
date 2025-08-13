@@ -68,5 +68,10 @@ The application is structured with clear separation of concerns:
 - 'not_specified'
 
 
+## Set up the database Prisma when update
+
+npx prisma generate
+npx prisma migrate dev --name init
+
 
 
