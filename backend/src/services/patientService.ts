@@ -74,10 +74,20 @@ export const updatePatient = (id: number, name: string, email: string): Patient 
   return patients[index];
 };
 */
-export const updatePatient = async (id: number, name: string, email: string) => {
+export const updatePatient = async (id: number, data: Patient) => {
   return await prisma.patient.update({
     where: { id },
-    data: { name, email }
+    data: {
+      name: data.name,
+      email: data.email,
+      age: data.age ?? undefined,
+      gender: data.gender,
+      heightCm: data.heightCm ?? null,
+      weightKg: data.weightKg ?? null,
+      bloodType: data.bloodType,
+      smoker: data.smoker ?? null,
+      pregnant: data.pregnant ?? null
+      }
   });
 };
 
