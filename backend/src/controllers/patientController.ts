@@ -47,6 +47,7 @@ export const createPatient = async (req: Request, res: Response) => {
 
 function toPatient(body: any): Patient {
   return {
+    id: Number(body.id),
     name: String(body.name),
     email: String(body.email),
     age: body.age ?? null,
@@ -72,8 +73,8 @@ export const updatePatient = (req: Request, res: Response) => {
 };
 */
 export const updatePatient = async (req: Request, res: Response) => {
-  const { name, email } = req.body;
-  const updatedUser = await patientService.updatePatient(parseInt(req.params.id), name, email);
+   const patient = toPatient(req.body);
+  const updatedUser = await patientService.updatePatient(parseInt(req.params.id), patient);
   res.json(updatedUser);
 };
 
